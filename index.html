@@ -16,7 +16,71 @@
 
   <body>
     <div class="container">
-      <h1>Weather app</h1>
+      <div>
+        <div class="card" style="width: 35rem">
+          <div class="card-body">
+            <div class="formStyle">
+              <form id="search-city-form">
+                <input
+                  type="search"
+                  placeholder="🔎search a city"
+                  class="formComponent"
+                  id="search-bar"
+                />
+              </form>
+              <button id="submit-search">search</button>
+              <button id="current-button">current</button>
+            </div>
+            <div class="row">
+              <div class="col-12" id="city-name">City name</div>
+            </div>
+            <div>🌤</div>
+            <div class="characteristics" id="description">Description:</div>
+            <div class="row">
+              <div class="col-7 temperature"><span id="temp">°C</span></div>
+            </div>
+            <div class="characGroup">
+              <div class="characteristics" class="leftCharac" id="date"></div>
+              <div class="characteristics" class="rightCharac" id="humidity">
+                Humidity:
+              </div>
+            </div>
+            <div class="characGroup">
+              <div class="characteristics" class="rightCharac" id="wind">
+                Wind speed:
+              </div>
+            </div>
+            <div class="row">
+              <div class="col day-left">
+                Tomorrow
+                <div>☁</div>
+                <span class="gray">27°C</span>
+              </div>
+              <div class="col day-right">
+                Tues
+                <div>🌤</div>
+                <span class="gray">28°C</span>
+              </div>
+              <div class="col day-left">
+                Wed
+                <div>🌤</div>
+                <span class="gray">27°C</span>
+              </div>
+              <div class="col day-right">
+                Thur
+                <div>🌧</div>
+                <span class="gray">26°C</span>
+              </div>
+              <div class="col last-day">
+                Fri
+                <div>🌤</div>
+                <span class="gray">25°C</span>
+              </div>
+            </div>
+            <div class="row"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="src/index.js"></script>
   </body>
