@@ -1,10 +1,65 @@
 .card {
-  max-width: 600px;
+  max-width: 375px;
   margin: 30px 0 auto;
   padding: 10px;
+  display: block;
+}
+.characteristics {
+  font-size: 15px;
+  font-family: "Cormorant Garamond", serif;
+  font-family: "Silkscreen", cursive;
+  font-family: "Work Sans", sans-serif;
+  line-height: 17px;
+}
+#submit-search {
+  margin-right: 5px;
+  margin-bottom: 25px;
 }
 #city-name {
   font-family: "Cormorant Garamond", serif;
-  font-size: 40px;
+  font-family: "Silkscreen", cursive;
+  font-family: "Work Sans", sans-serif;
+  font-size: 30px;
   text-align: center;
+  line-height: 1;
+}
+#description {
+  font-family: "Silkscreen", cursive;
+  font-family: "Work Sans", sans-serif;
+  text-align: center;
+  font-size: 20px;
+  line-height: 22px;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+#date {
+  font-family: "Silkscreen", cursive;
+  font-family: "Work Sans", sans-serif;
+  color: rgb(153, 151, 151);
+  text-align: center;
+}
+#icon {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  font-size: 45px;
+}
+#search-city-form {
+  margin-bottom: 0px;
+  display: inline;
+}
+#search-bar {
+  margin-right: 5px;
+  display: inline;
+  width: 170px;
+}
+#temp {
+  text-align: center;
+  margin: 0 auto;
+}
+#precipitation {
+  margin-bottom: 20px;
+}
+#temp-number {
+  font-size: 70px;
 }
