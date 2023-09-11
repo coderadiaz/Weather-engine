@@ -23,20 +23,28 @@ function formatDate(timestamp) {
 function displayTemp(response) {
   console.log(response);
   let temperatureElement = document.querySelector(`#temp-number`);
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector(`#city-name`);
-  cityElement.innerHTML = response.data.city;
   let descriptionElement = document.querySelector(`#description`);
-  descriptionElement.innerHTML = response.data.condition.description;
   let humidityElement = document.querySelector(`#humidity`);
-  humidityElement.innerHTML = response.data.temperature.humidity;
   let windSpeedElement = document.querySelector(`#wind`);
-  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector(`#date`);
+  let iconElement = document.querySelector(`#icon`);
+  let iconDescription = response.data.condition.icon;
+  iconElement.setAttribute(
+    `src`,
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${iconDescription}.png`
+  );
+  iconElement.setAttribute(`alt`, response.data.condition.icon);
+
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
 
-let city = `Madrid`;
+let city = `Paris`;
 let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
