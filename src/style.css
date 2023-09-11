@@ -63,3 +63,6 @@
 #temp-number {
   font-size: 70px;
 }
+#description {
+  text-transform: capitalize;
+}
