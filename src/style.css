@@ -11,6 +11,14 @@
   font-family: "Work Sans", sans-serif;
   line-height: 17px;
 }
+.active {
+  color: #000;
+  text-decoration: none;
+}
+.active:hover {
+  text-decoration: none;
+  cursor: default;
+}
 #submit-search {
   margin-right: 5px;
   margin-bottom: 25px;
@@ -65,4 +73,10 @@
 }
 #description::first-letter {
   text-transform: uppercase;
+}
+#farenheit-value {
+  text-decoration: none;
+}
+#celsius-value {
+  text-decoration: none;
 }

@@ -28,6 +28,7 @@ function displayTemp(response) {
   let windSpeedElement = document.querySelector(`#wind`);
   let dateElement = document.querySelector(`#date`);
   let iconElement = document.querySelector(`#icon`);
+  celsiustemperature = response.data.temperature.current;
   let iconDescription = response.data.condition.icon;
   iconElement.setAttribute(
     `src`,
@@ -47,14 +48,32 @@ function search(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(displayTemp);
 }
+let celsiustemperature = null;
 function handleSubmit(event) {
   event.preventDefault();
   let searchBarElement = document.querySelector(`#search-bar`);
   search(searchBarElement.value);
 }
-
-let city = `Caracas`;
-
+function showFarenheit(event) {
+  event.preventDefault();
+  farenheitLink.classList.add(`active`);
+  celsiusLink.classList.remove(`active`);
+  let farenheitTemp = celsiustemperature * (9.0 / 5.0) + 32.0;
+  let displayFarenheit = document.querySelector(`#temp-number`);
+  displayFarenheit.innerHTML = Math.round(farenheitTemp);
+}
+function showCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add(`active`);
+  farenheitLink.classList.remove(`active`);
+  let displayCelsius = document.querySelector(`#temp-number`);
+  displayCelsius.innerHTML = Math.round(celsiustemperature);
+}
 let form = document.querySelector(`#search-city-form`);
-console.log(form);
 form.addEventListener(`submit`, handleSubmit);
+
+let farenheitLink = document.querySelector(`#farenheit-value`);
+farenheitLink.addEventListener(`click`, showFarenheit);
+
+let celsiusLink = document.querySelector(`#celsius-value`);
+celsiusLink.addEventListener(`click`, showCelsius);
