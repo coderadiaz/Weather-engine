@@ -21,7 +21,6 @@ function formatDate(timestamp) {
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
 function displayTemp(response) {
-  console.log(response);
   let temperatureElement = document.querySelector(`#temp-number`);
   let cityElement = document.querySelector(`#city-name`);
   let descriptionElement = document.querySelector(`#description`);
@@ -43,9 +42,19 @@ function displayTemp(response) {
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
+function search(city) {
+  let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayTemp);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchBarElement = document.querySelector(`#search-bar`);
+  search(searchBarElement.value);
+}
 
-let city = `Paris`;
-let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+let city = `Caracas`;
 
-axios.get(apiUrl).then(displayTemp);
+let form = document.querySelector(`#search-city-form`);
+console.log(form);
+form.addEventListener(`submit`, handleSubmit);
