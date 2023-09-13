@@ -69,14 +69,6 @@ function showCelsius(event) {
   let displayCelsius = document.querySelector(`#temp-number`);
   displayCelsius.innerHTML = Math.round(celsiustemperature);
 }
-function currentTemp(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  console.log(lat);
-  let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`;
-  axios.get(apiUrl).then(displayTemp);
-}
 
 let form = document.querySelector(`#search-city-form`);
 form.addEventListener(`submit`, handleSubmit);
@@ -86,4 +78,4 @@ farenheitLink.addEventListener(`click`, showFarenheit);
 
 let celsiusLink = document.querySelector(`#celsius-value`);
 celsiusLink.addEventListener(`click`, showCelsius);
-navigator.geolocation.getCurrentPosition(currentTemp);
+search(`Paris`);
