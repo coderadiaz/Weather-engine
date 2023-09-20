@@ -33,6 +33,21 @@ button {
   text-decoration: none;
   cursor: default;
 }
+.forecast-content {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 3px 3px 3px 7px;
+  background: radial-gradient(
+    circle at 5.3% 17.2%,
+    rgb(255, 208, 253) 0%,
+    rgb(255, 237, 216) 90%
+  );
+}
+.gray {
+  font-size: 13px;
+}
 #units {
   position: relative;
   top: -34px;
