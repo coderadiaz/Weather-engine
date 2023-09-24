@@ -20,7 +20,15 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
+function displayForecast(response) {}
+function getForecast(city) {
+  let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function displayTemp(response) {
+  console.log(response);
   let temperatureElement = document.querySelector(`#temp-number`);
   let cityElement = document.querySelector(`#city-name`);
   let descriptionElement = document.querySelector(`#description`);
@@ -42,6 +50,7 @@ function displayTemp(response) {
   humidityElement.innerHTML = response.data.temperature.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+  getForecast(response.data.city);
 }
 function search(city) {
   let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
