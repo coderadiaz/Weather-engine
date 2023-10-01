@@ -20,7 +20,11 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
-function displayForecast(response) {}
+function displayForecast(response) {
+  console.log(response);
+  let forecastElement = document.querySelector(`#forecast`);
+  forecastElement.innerHTML 
+}
 function getForecast(city) {
   let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
