@@ -1,3 +1,45 @@
+function displayFirstForecast(response) {
+  console.log(response);
+  let firstPartElement = document.querySelector(`#first-part-forecast`);
+  let firstPartHTML = `<div class="row">`;
+  let days = [`Mon`, `Tues`, `Wed`];
+  days.forEach(function (day) {
+    firstPartHTML =
+      firstPartHTML +
+      `<div class="col forecast-content">
+                    ${day}
+                    <div id="first-day-icon">☁</div>
+                    <span class="gray">27°C</span>
+                    <span class="gray"> 90°F</span>
+                  </div>`;
+  });
+  firstPartHTML = firstPartHTML + `</div>`;
+  firstPartElement.innerHTML = firstPartHTML;
+}
+function displaySecondForecast(response) {
+  console.log(response);
+  let secondPartElement = document.querySelector(`#second-part-forecast`);
+  let secondPartHTML = `<div class= "row">`;
+  let days = [`Wed`, `Thur`];
+  days.forEach(function (day) {
+    secondPartHTML =
+      secondPartHTML +
+      `<div class="col forecast-content">
+                    ${day}
+                    <div id="first-day-icon">☁</div>
+                    <span class="gray">27°C</span>
+                    <span class="gray"> 90°F</span>
+                  </div>`;
+  });
+  secondPartHTML = secondPartHTML + `</div>`;
+  secondPartElement.innerHTML = secondPartHTML;
+}
+function getForecast(city) {
+  let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayFirstForecast);
+}
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -20,19 +62,8 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
-function displayForecast(response) {
-  console.log(response);
-  let forecastElement = document.querySelector(`#forecast`);
-  forecastElement.innerHTML 
-}
-function getForecast(city) {
-  let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(displayForecast);
-}
+
 function displayTemp(response) {
-  console.log(response);
   let temperatureElement = document.querySelector(`#temp-number`);
   let cityElement = document.querySelector(`#city-name`);
   let descriptionElement = document.querySelector(`#description`);
@@ -82,7 +113,8 @@ function showCelsius(event) {
   let displayCelsius = document.querySelector(`#temp-number`);
   displayCelsius.innerHTML = Math.round(celsiustemperature);
 }
-
+displayFirstForecast();
+displaySecondForecast();
 let form = document.querySelector(`#search-city-form`);
 form.addEventListener(`submit`, handleSubmit);
 
