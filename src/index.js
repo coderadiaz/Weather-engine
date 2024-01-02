@@ -3,11 +3,11 @@ function displayFirstForecast(response) {
   let firstPartElement = document.querySelector(`#first-part-forecast`);
   let firstPartHTML = `<div class="row">`;
   let days = [`Mon`, `Tues`, `Wed`];
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     firstPartHTML =
       firstPartHTML +
       `<div class="col forecast-content">
-                    ${day}
+                    Tue
                     <div id="first-day-icon">☁</div>
                     <span class="gray">27°C</span>
                     <span class="gray"> 90°F</span>
@@ -38,6 +38,7 @@ function getForecast(city) {
   let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(displayFirstForecast);
+  axios.get(apiUrl).then(displaySecondForecast);
 }
 
 function formatDate(timestamp) {
