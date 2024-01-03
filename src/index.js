@@ -1,17 +1,31 @@
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[date.getDay()];
+}
 function displayFirstForecast(response) {
   console.log(response);
   let firstPartElement = document.querySelector(`#first-part-forecast`);
   let firstPartHTML = `<div class="row">`;
-  let days = [`Mon`, `Tues`, `Wed`];
-  response.data.daily.forEach(function (day) {
-    firstPartHTML =
-      firstPartHTML +
-      `<div class="col forecast-content">
-                    Tue
-                    <div id="first-day-icon">☁</div>
-                    <span class="gray">27°C</span>
-                    <span class="gray"> 90°F</span>
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 3) {
+      firstPartHTML =
+        firstPartHTML +
+        `<div class="col forecast-content">
+                    ${formatDay(day.time)}
+                    <div >
+                    <img id="first-day-icon"src="${
+                      day.condition.icon_url
+                    }"></div>
+                    <span class="gray">${Math.round(
+                      day.temperature.minimum
+                    )}°C</span>
+                    <span class="gray"> ${Math.round(
+                      day.temperature.minimum * (9.0 / 5.0) + 32.0
+                    )}°F </span>
                   </div>`;
+    }
   });
   firstPartHTML = firstPartHTML + `</div>`;
   firstPartElement.innerHTML = firstPartHTML;
@@ -21,19 +35,29 @@ function displaySecondForecast(response) {
   let secondPartElement = document.querySelector(`#second-part-forecast`);
   let secondPartHTML = `<div class= "row">`;
   let days = [`Wed`, `Thur`];
-  days.forEach(function (day) {
-    secondPartHTML =
-      secondPartHTML +
-      `<div class="col forecast-content">
-                    ${day}
-                    <div id="first-day-icon">☁</div>
-                    <span class="gray">27°C</span>
-                    <span class="gray"> 90°F</span>
+  response.data.daily.forEach(function (day, index) {
+    if (index > 2 && index < 5) {
+      secondPartHTML =
+        secondPartHTML +
+        `<div class="col forecast-content">
+                    ${formatDay(day.time)}
+                    <div >
+                    <img id="first-day-icon"src="${
+                      day.condition.icon_url
+                    }"></div>
+                   <span class="gray">${Math.round(
+                     day.temperature.minimum
+                   )}°C</span>
+                    <span class="gray"> ${Math.round(
+                      day.temperature.minimum * (9.0 / 5.0) + 32.0
+                    )}°F</span>
                   </div>`;
+    }
   });
   secondPartHTML = secondPartHTML + `</div>`;
   secondPartElement.innerHTML = secondPartHTML;
 }
+
 function getForecast(city) {
   let apiKey = `da56a69ff3085ect3555f3472e44ofab`;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
@@ -114,8 +138,6 @@ function showCelsius(event) {
   let displayCelsius = document.querySelector(`#temp-number`);
   displayCelsius.innerHTML = Math.round(celsiustemperature);
 }
-displayFirstForecast();
-displaySecondForecast();
 let form = document.querySelector(`#search-city-form`);
 form.addEventListener(`submit`, handleSubmit);
 
