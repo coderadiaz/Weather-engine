@@ -20,10 +20,10 @@ function displayFirstForecast(response) {
                     }"></div>
                     <span class="gray">${Math.round(
                       day.temperature.minimum
-                    )}°C</span>
-                    <span class="gray"> ${Math.round(
+                    )}°C </span>
+                    <span class="gray"> | ${Math.round(
                       day.temperature.minimum * (9.0 / 5.0) + 32.0
-                    )}°F </span>
+                    )}°F</span>
                   </div>`;
     }
   });
@@ -39,7 +39,7 @@ function displaySecondForecast(response) {
     if (index > 2 && index < 5) {
       secondPartHTML =
         secondPartHTML +
-        `<div class="col forecast-content">
+        `<div class="col second-forecast-content" id="second-row">
                     ${formatDay(day.time)}
                     <div >
                     <img id="first-day-icon"src="${
@@ -47,8 +47,8 @@ function displaySecondForecast(response) {
                     }"></div>
                    <span class="gray">${Math.round(
                      day.temperature.minimum
-                   )}°C</span>
-                    <span class="gray"> ${Math.round(
+                   )}°C </span>
+                    <span class="gray"> | ${Math.round(
                       day.temperature.minimum * (9.0 / 5.0) + 32.0
                     )}°F</span>
                   </div>`;

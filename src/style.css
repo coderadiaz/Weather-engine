@@ -35,7 +35,7 @@ button {
 }
 .forecast-content {
   text-align: center;
-  border: 1px solid black;
+  border: none;
   border-radius: 8px;
   padding: 10px;
   margin: 3px 3px 3px 7px;
@@ -44,10 +44,27 @@ button {
     rgb(255, 208, 253) 0%,
     rgb(255, 237, 216) 90%
   );
+  box-shadow: 5px 3px 4px 0px rgba(229, 105, 206, 0.392);
+}
+
+.second-forecast-content {
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 3px 3px 3px 7px;
+  background: radial-gradient(
+    circle at 5.3% 17.2%,
+    rgb(255, 208, 253) 0%,
+    rgb(255, 237, 216) 90%
+  );
+  box-shadow: 5px 3px 4px 0px rgba(229, 105, 206, 0.392);
+  margin: 3px, 20px, 20px, 7px;
 }
 
 .gray {
   font-size: 13px;
+  color: rgb(153, 151, 151);
 }
 #units {
   position: relative;
@@ -85,10 +102,13 @@ button {
   margin: 0 auto;
   display: block;
   text-align: center;
-  font-size: 45px;
+  font-size: 4px;
 }
 #first-day-icon {
-  width: 30px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
 }
 #search-city-form {
   display: block;
