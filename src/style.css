@@ -66,6 +66,13 @@ button {
   font-size: 13px;
   color: rgb(153, 151, 151);
 }
+.source-code {
+  font-size: 10px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 6px;
+}
 #units {
   position: relative;
   top: -34px;
